@@ -1,0 +1,12 @@
+# FILE: .htaccess
+# Tempatkan file ini di root directory Anda (sejajar dengan index.php)
+
+RewriteEngine On
+
+# Jika file atau direktori yang diminta benar-benar ada, jangan lakukan rewrite
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Aturan: Tangkap setiap permintaan yang berakhir dengan .php (misalnya silat.php)
+# dan arahkan ke ekskul_detail.php dengan parameter slug
+RewriteRule ^(.*\.php)$ ekskul_detail.php?slug=$1 [L,QSA]
